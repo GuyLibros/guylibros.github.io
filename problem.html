@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Driver.js Simple Highlight</title>
+  <title>Driver.js Example</title>
   <!-- Link to Driver.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
   <!-- Link to Driver.js JavaScript -->
@@ -12,33 +12,31 @@
 <body>
 
   <!-- Page Content -->
-  <h1>Welcome to the Simple Highlight Example</h1>
-  <p>This example uses Driver.js to highlight a single element on the page only when you click the button.</p>
-  
-  <!-- Button to Start the Highlight -->
-  <button id="highlight-button">Highlight Element</button>
+  <div class="page-header">This is the Page Header</div>
+  <div class="top-nav">This is the Top Navigation</div>
+  <div class="sidebar">This is the Sidebar</div>
+  <div class="footer">This is the Footer</div>
 
-  <!-- Element to Highlight -->
-  <div id="highlight-element" style="margin-top: 20px; padding: 10px; background-color: #e0f7fa;">
-    <p>This element will be highlighted by Driver.js when you click the button.</p>
-  </div>
+  <!-- Button to Start the Tour -->
+  <button id="start-tour">Start Tour</button>
 
-  <!-- JavaScript to Set Up and Start the Highlight -->
+  <!-- JavaScript to Set Up and Start the Driver.js Tour -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Create a new instance of Driver
-      const driver = new Driver();
+      // Create the Driver.js instance
+      const driver = new Driver({
+        showProgress: true,
+        steps: [
+          { element: '.page-header', popover: { title: 'Header', description: 'This is the page header.' } },
+          { element: '.top-nav', popover: { title: 'Navigation', description: 'This is the top navigation bar.' } },
+          { element: '.sidebar', popover: { title: 'Sidebar', description: 'This is the sidebar.' } },
+          { element: '.footer', popover: { title: 'Footer', description: 'This is the footer.' } }
+        ]
+      });
 
-      // Set up the highlight action only when the button is clicked
-      document.getElementById('highlight-button').addEventListener('click', function() {
-        driver.highlight({
-          element: '#highlight-element', // The element to highlight
-          popover: {
-            title: 'Highlighted Element',
-            description: 'This is the element being highlighted with Driver.js.',
-            position: 'bottom'
-          }
-        });
+      // Start the tour when the button is clicked
+      document.getElementById('start-tour').addEventListener('click', function() {
+        driver.start(); // Start the tour
       });
     });
   </script>
