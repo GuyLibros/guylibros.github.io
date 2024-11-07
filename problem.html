@@ -23,7 +23,9 @@
   <!-- JavaScript to Set Up and Start the Driver.js Tour -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Create the Driver.js instance
+      console.log("DOM fully loaded"); // Debugging line to confirm DOM load
+
+      // Create the Driver.js instance but do not start it here
       const driver = new Driver({
         showProgress: true,
         steps: [
@@ -34,9 +36,10 @@
         ]
       });
 
-      // Start the tour when the button is clicked
+      // Event listener to start the tour only when the button is clicked
       document.getElementById('start-tour').addEventListener('click', function() {
-        driver.start(); // Start the tour
+        console.log("Starting tour..."); // Debugging line to confirm button click
+        driver.start(); // Start the tour here
       });
     });
   </script>
