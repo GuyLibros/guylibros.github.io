@@ -1,48 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Driver.js Example</title>
-  <!-- Link to Driver.js CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
-  <!-- Link to Driver.js JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver.js Demo</title>
+    <!-- Add the driver.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.css">
 </head>
 <body>
+    <!-- Your HTML content -->
+    <div id="some-element">Highlight me!</div>
 
-  <!-- Page Content -->
-  <div class="page-header">This is the Page Header</div>
-  <div class="top-nav">This is the Top Navigation</div>
-  <div class="sidebar">This is the Sidebar</div>
-  <div class="footer">This is the Footer</div>
+    <!-- Your custom script -->
+    <script>
+        // Access driver.js after the script has loaded
+        const driver = window.driver;
 
-  <!-- Button to Start the Tour -->
-  <button id="start-tour">Start Tour</button>
+        // Initialize the driver object
+        const driverObj = driver();
 
-  <!-- JavaScript to Set Up and Start the Driver.js Tour -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      console.log("DOM fully loaded"); // Debugging line to confirm DOM load
-
-      // Create the Driver.js instance but do not start it here
-      const driver = new Driver({
-        showProgress: true,
-        steps: [
-          { element: '.page-header', popover: { title: 'Header', description: 'This is the page header.' } },
-          { element: '.top-nav', popover: { title: 'Navigation', description: 'This is the top navigation bar.' } },
-          { element: '.sidebar', popover: { title: 'Sidebar', description: 'This is the sidebar.' } },
-          { element: '.footer', popover: { title: 'Footer', description: 'This is the footer.' } }
-        ]
-      });
-
-      // Event listener to start the tour only when the button is clicked
-      document.getElementById('start-tour').addEventListener('click', function() {
-        console.log("Starting tour..."); // Debugging line to confirm button click
-        driver.start(); // Start the tour here
-      });
-    });
-  </script>
-
+        // Highlight the element
+        driverObj.highlight({
+            element: "#some-element",
+            popover: {
+                title: "Title",
+                description: "Description of the element."
+            }
+        });
+    </script>
 </body>
 </html>
