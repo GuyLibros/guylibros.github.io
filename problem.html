@@ -14,19 +14,16 @@
 
     <!-- Your custom script -->
     <script>
-        // Access driver.js after the script has loaded
-        const driver = window.driver;
-
-        // Initialize the driver object
-        const driverObj = driver();
-
-        // Highlight the element
-        driverObj.highlight({
-            element: "#some-element",
-            popover: {
-                title: "Title",
-                description: "Description of the element."
-            }
+        document.addEventListener("DOMContentLoaded", function() {
+            const driver = window.driver;
+            const driverObj = driver();
+            driverObj.highlight({
+                element: "#some-element",
+                popover: {
+                    title: "Title",
+                    description: "Description of the element."
+                }
+            });
         });
     </script>
 </body>
