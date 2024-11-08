@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display.js Troubleshooting</title>
     <!-- Include Display.js from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/displayjs@1.0.0/dist/display.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/driverjs@1.0.0/dist/driver.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,14 +32,14 @@
 
     <script>
         // Confirm if Display.js is loaded
-        console.log("Display.js loaded:", typeof DisplayJS !== "undefined");
+        console.log("Driver.js loaded:", typeof DriverJS !== "undefined");
 
         document.addEventListener("DOMContentLoaded", function () {
-            if (typeof DisplayJS !== "undefined") {
-                // Initialize Display.js
-                const d = new DisplayJS();
+            if (typeof DriverJS !== "undefined") {
+                // Initialize Driver.js
+                const d = new DriverJS();
 
-                // Function to update the message using Display.js
+                // Function to update the message using Driver.js
                 function displayMessage() {
                     d.text("message", "Hello, World!");
                 }
@@ -47,7 +47,7 @@
                 // Attach the function globally
                 window.displayMessage = displayMessage;
             } else {
-                console.error("Display.js is not loaded.");
+                console.error("Driver.js is not loaded.");
             }
         });
     </script>
