@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driver.js Demo</title>
-    <!-- Add the driver.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.css">
+    <title>Simple Display.js Example</title>
+    <!-- Include Display.js from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/displayjs@1.0.0/dist/display.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <!-- Your HTML content -->
-    <div id="some-element">Highlight me!</div>
+    <div class="container">
+        <h1 id="message">Welcome</h1>
+        <button onclick="displayMessage()">Show Message</button>
+    </div>
 
-    <!-- Your custom script -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const driver = window.driver;
-            const driverObj = driver();
-            driverObj.highlight({
-                element: "#some-element",
-                popover: {
-                    title: "Title",
-                    description: "Description of the element.",
-                    side: left 
-                }
-            });
-        });
+        // Initialize Display.js
+        const d = new DisplayJS();
+
+        // Function to update the message
+        function displayMessage() {
+            d.text("message", "Hello, World!");
+        }
     </script>
 </body>
 </html>
