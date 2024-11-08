@@ -3,54 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driver.js Single Step Test</title>
-    <!-- Include Driver.js CSS and JavaScript from a CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/driver.js/0.9.8/driver.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/driver.js/0.9.8/driver.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f5f5f5;
-        }
-        .container {
-            text-align: center;
-        }
-        button {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Shepherd.js Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shepherd/8.0.0/css/shepherd.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shepherd/8.0.0/shepherd.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1 id="header">Welcome to the Guided Tour</h1>
-        <p id="description">This is a demo to show how Driver.js works for guided tours.</p>
+    <div class="container" style="text-align: center; margin-top: 50px;">
+        <h1 id="header">Welcome to the Guided Tour with Shepherd.js</h1>
         <button onclick="startTour()">Start Tour</button>
     </div>
 
     <script>
         function startTour() {
-            const driver = new Driver();
-
-            // Define a single tour step for testing
-            driver.defineSteps([
-                {
-                    element: '#header',
-                    popover: {
-                        title: 'Header',
-                        description: 'This is the main header of the page.',
-                        position: 'bottom'
-                    }
+            const tour = new Shepherd.Tour({
+                defaultStepOptions: {
+                    cancelIcon: { enabled: true },
+                    classes: 'shepherd-theme-arrows',
+                    scrollTo: { behavior: 'smooth', block: 'center' }
                 }
-            ]);
+            });
 
-            // Start the tour with only one step
-            driver.start();
+            tour.addStep({
+                title: 'Header',
+                text: 'This is the main header of the page.',
+                attachTo: { element: '#header', on: 'bottom' },
+                buttons: [
+                    { text: 'Next', action: tour.next }
+                ]
+            });
+
+            tour.start();
         }
     </script>
 </body>
