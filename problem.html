@@ -26,18 +26,24 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="message"></h1>
+        <h1 id="message"></h1> <!-- Start with an empty h1 tag -->
         <button onclick="displayMessage()">Show Message</button>
     </div>
 
     <script>
-        // Initialize Display.js
-        const d = new DisplayJS();
+        // Wait for the page to fully load
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize Display.js after the page is fully loaded
+            const d = new DisplayJS();
 
-        // Function to update the message
-        function displayMessage() {
-            d.text("message", "Hello, World!");
-        }
+            // Function to update the message
+            function displayMessage() {
+                d.text("message", "Hello, World!");
+            }
+
+            // Attach the function to the global scope for the button to access it
+            window.displayMessage = displayMessage;
+        });
     </script>
 </body>
 </html>
