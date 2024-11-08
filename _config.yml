@@ -1,5 +1,0 @@
-title: Your Site Title
-description: This is a basic site created with GitHub Pages.
-baseurl: "" # the subpath of your site, e.g., /blog
-url: "https://guylibros.github.io" # the base hostname & protocol for your site
-theme: jekyll-theme-architect
