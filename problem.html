@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple JavaScript Example</title>
+    <title>Display.js Example</title>
+    <!-- Re-introduce Display.js from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/displayjs@1.0.0/dist/display.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,10 +31,19 @@
     </div>
 
     <script>
-        // Basic function to display the message
-        function displayMessage() {
-            document.getElementById("message").textContent = "Hello, World!";
-        }
+        // Wait for the page to fully load before initializing Display.js
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize Display.js
+            const d = new DisplayJS();
+
+            // Function to update the message using Display.js
+            function displayMessage() {
+                d.text("message", "Hello, World!");
+            }
+
+            // Attach the function to the global scope for the button to access it
+            window.displayMessage = displayMessage;
+        });
     </script>
 </body>
 </html>
