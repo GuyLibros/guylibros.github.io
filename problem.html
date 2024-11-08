@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display.js Example</title>
-    <!-- Re-introduce Display.js from a CDN -->
+    <title>Display.js Troubleshooting</title>
+    <!-- Include Display.js from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/displayjs@1.0.0/dist/display.min.js"></script>
     <style>
         body {
@@ -26,23 +26,29 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="message"></h1> <!-- Start with an empty h1 tag -->
+        <h1 id="message"></h1>
         <button onclick="displayMessage()">Show Message</button>
     </div>
 
     <script>
-        // Wait for the page to fully load before initializing Display.js
+        // Confirm if Display.js is loaded
+        console.log("Display.js loaded:", typeof DisplayJS !== "undefined");
+
         document.addEventListener("DOMContentLoaded", function () {
-            // Initialize Display.js
-            const d = new DisplayJS();
+            if (typeof DisplayJS !== "undefined") {
+                // Initialize Display.js
+                const d = new DisplayJS();
 
-            // Function to update the message using Display.js
-            function displayMessage() {
-                d.text("message", "Hello, World!");
+                // Function to update the message using Display.js
+                function displayMessage() {
+                    d.text("message", "Hello, World!");
+                }
+
+                // Attach the function globally
+                window.displayMessage = displayMessage;
+            } else {
+                console.error("Display.js is not loaded.");
             }
-
-            // Attach the function to the global scope for the button to access it
-            window.displayMessage = displayMessage;
         });
     </script>
 </body>
